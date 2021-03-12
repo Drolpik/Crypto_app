@@ -1,0 +1,50 @@
+.Container {
+  display: flex;
+  justify-content: center;
+
+  .CoinRow {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    .Coin {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+      }
+
+      h1 {
+      }
+    }
+
+    .CoinInfo {
+      display: flex;
+      width: 100%;
+
+      .CoinPrice {
+          width: 100%;
+      }
+
+      .CoinPriceChange {
+          width: 100%;
+      }
+
+      .CPC_Red {
+        color: red;
+      }
+
+      .CPC_Green {
+        color: green;
+      }
+    }
+  }
+}
