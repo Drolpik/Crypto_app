@@ -3,11 +3,13 @@
   justify-content: center;
 
   .CoinRow {
+    background-color: rgb(247, 240, 240);
     display: flex;
     flex-flow: row;
     align-items: center;
     width: 60%;
-    border: 1px solid black;
+    min-width: 520px;
+    box-shadow: 8px 7px 15px -1px rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     margin-bottom: 20px;
 
@@ -15,6 +17,7 @@
       display: flex;
       align-items: center;
       width: 100%;
+      margin-left: 20px;
 
       img {
         width: 40px;
@@ -31,11 +34,13 @@
       width: 100%;
 
       .CoinPrice {
-          width: 100%;
+        width: 100%;
+        font-weight: 400;
       }
 
       .CoinPriceChange {
-          width: 100%;
+        width: 100%;
+        font-weight: 700;
       }
 
       .CPC_Red {

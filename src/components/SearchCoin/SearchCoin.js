@@ -5,11 +5,18 @@ const searchCoin = (props) => {
     return (
         <div className={classes.Container}>
             <h1>Search a cryptocurrency</h1>
-            <input 
-                type="text"
-                placeholder="Enter crypto name" 
-                onChange={props.changed} >
-            </input>
+            <div className={classes.Form}>
+                <input 
+                    type="text"
+                    required 
+                    autocomplete="off"
+                    name="name"
+                    onChange={props.changed} >
+                </input>
+                <label for="name" className={classes.LabelName}>
+                    <span className={classes.ContentName}>Crypto name</span>
+                </label>
+            </div>
         </div>
     );
 }

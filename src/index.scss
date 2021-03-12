@@ -3,4 +3,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  background: linear-gradient(to bottom right, #2e61f0 0%, #8f0e0c 100%);
+  background-size: cover;
+  background-attachment: fixed;
 }
