@@ -1,15 +1,17 @@
+@import "../../styles/variables.scss";
+
 .Container {
   display: flex;
   justify-content: center;
 
   .CoinRow {
-    background-color: rgb(247, 240, 240);
+    background-color: $CoinTabColor;
     display: flex;
     flex-flow: row;
     align-items: center;
     width: 60%;
     min-width: 520px;
-    box-shadow: 8px 7px 15px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 8px 7px 15px -1px $CoinTabShadowColor;
     border-radius: 10px;
     margin-bottom: 20px;
 
@@ -43,12 +45,12 @@
         font-weight: 700;
       }
 
-      .CPC_Red {
-        color: red;
+      .CPC_Loss {
+        color: $CPC_lossColor;
       }
 
-      .CPC_Green {
-        color: green;
+      .CPC_Profit {
+        color: $CPC_profitColor;
       }
     }
   }

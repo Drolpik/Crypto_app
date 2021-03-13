@@ -12,9 +12,9 @@ const coinTab = (props) => {
                 <div className={classes.CoinInfo}>
                     <p className={classes.CoinPrice}>${props.price}</p>
                     {props.priceChange < 0 ? (
-                        <p className={[classes.CoinPriceChange, classes.CPC_Red].join(' ')}>{props.priceChange.toFixed(2)}%</p>
+                        <p className={[classes.CoinPriceChange, classes.CPC_Loss].join(' ')}>{props.priceChange.toFixed(2)}%</p>
                     ) : (
-                        <p className={[classes.CoinPriceChange, classes.CPC_Green].join(' ')}>{props.priceChange.toFixed(2)}%</p>
+                        <p className={[classes.CoinPriceChange, classes.CPC_Profit].join(' ')}>{props.priceChange.toFixed(2)}%</p>
                     )
                     }
                 </div>
