@@ -9,11 +9,11 @@ const searchCoin = (props) => {
                 <input 
                     type="text"
                     required 
-                    autocomplete="off"
+                    autoComplete="off"
                     name="name"
                     onChange={props.changed} >
                 </input>
-                <label for="name" className={classes.LabelName}>
+                <label htmlFor="name" className={classes.LabelName}>
                     <span className={classes.ContentName}>Crypto name</span>
                 </label>
             </div>
