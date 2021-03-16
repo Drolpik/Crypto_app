@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './CoinTab.module.scss';
 
-const CoinTab = (props) => {
+const coinTab = (props) => {
     return (
         <div className={classes.Container}>
             <div className={classes.CoinRow}>
@@ -10,7 +10,7 @@ const CoinTab = (props) => {
                     <h1>{props.name}</h1>
                 </div>
                 <div className={classes.CoinInfo}>
-                    <p className={classes.CoinPrice}>{props.price} {props.currencyName}</p>
+                    <p className={classes.CoinPrice}>{props.price} {props.selectedCurrency}</p>
                     {props.priceChange < 0 ? (
                         <p className={[classes.CoinPriceChange, classes.CPC_Loss].join(' ')}>{props.priceChange.toFixed(2)}%</p>
                     ) : (
@@ -23,4 +23,4 @@ const CoinTab = (props) => {
     );
 }
 
-export default CoinTab
+export default coinTab
