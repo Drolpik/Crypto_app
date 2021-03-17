@@ -11,22 +11,24 @@ class Layout extends Component {
   state = {
     coinsData: [],
     searchValue: '',
-    selectedCurrency: '',
-    exchangeRate: '',
+    selectedCurrency: 'EUR',
     currencyOptions: [],
+    exchangeRatesData: [],
+    exchangeRate: 1,
   }
 
   componentDidMount() {
     // exchange data
     axios.get(EXCHANGE_URL)
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         this.setState({currencyOptions: [response.data.base, ...Object.keys(response.data.rates)]});
         this.setState({selectedCurrency: response.data.base});
+        this.setState({exchangeRatesData: response.data.rates});
 
-        console.log(response.data.rates)
-        console.log(this.state.currencyOptions);
-        console.log(this.state.currencyOptions[0]);
+        //console.log(this.state.exchangeRatesData);
+        //console.log(this.state.currencyOptions);
+        //console.log(this.state.currencyOptions[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -36,12 +38,28 @@ class Layout extends Component {
       axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
       .then((response) => {
         this.setState({coinsData: response.data});
-        console.log('COINSDATA:');
-        console.log(this.state.coinsData);
+        // console.log('COINSDATA:');
+        // console.log(this.state.coinsData);
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.selectedCurrency !== prevState.selectedCurrency) {
+      console.log(`Currency Did Update: ${this.state.selectedCurrency}`);
+      const CurrencyNames = Object.keys(this.state.exchangeRatesData);
+      const index = CurrencyNames.findIndex(el => el === this.state.selectedCurrency);
+      console.log(index);
+      
+      const CurrencyRates = Object.values(this.state.exchangeRatesData);
+      const NumRate = CurrencyRates[index];
+
+      this.state.selectedCurrency === 'EUR' 
+        ? this.setState({exchangeRate: 1}) 
+        : this.setState({exchangeRate: NumRate});
+    }
   }
 
   searchValueHandler = (event) => {
@@ -75,6 +93,7 @@ class Layout extends Component {
               price={coin.current_price}
               priceChange={coin.price_change_percentage_24h}
               selectedCurrency={this.state.selectedCurrency}
+              exchangeRate={this.state.exchangeRate}
             />
           );
         })}
