@@ -1,2 +1,30 @@
-.CurrencyList {
+@import "../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.Container {
+  font-family: "Hachi Maru Pop", cursive;
+  margin-left: 20px;
+
+  .CurrencyList {
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0px 10px 25px 0px $BoxShadow;
+    appearance: none;
+    background: none;
+    border: none;
+    color: $FontColorWhite;
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    outline: none;
+    background-image: url("../../assets//arrow-down-sign-to-navigate.svg");
+    background-position: right 10px top 50%;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    padding-right: 35px;
+
+    option {
+      background: $CurrencyListBackgroundColor;
+      color: $FontColorWhite;
+    }
+  }
 }

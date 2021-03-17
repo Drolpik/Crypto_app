@@ -1,6 +1,8 @@
 @import "../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
 
 .Container {
+  font-family: "Oswald", sans-serif;
   display: flex;
   justify-content: center;
 
@@ -11,7 +13,7 @@
     align-items: center;
     width: 60%;
     min-width: 520px;
-    box-shadow: 8px 7px 15px -1px $CoinTabShadowColor;
+    box-shadow: 8px 7px 15px -1px $BoxShadow;
     border-radius: 10px;
     margin-bottom: 20px;
 
@@ -38,11 +40,13 @@
 
       .CoinPrice {
         width: 100%;
+        font-size: 1.3rem;
         font-weight: 400;
       }
 
       .CoinPriceChange {
         width: 100%;
+        font-size: 1.3rem;
         font-weight: 700;
       }
 

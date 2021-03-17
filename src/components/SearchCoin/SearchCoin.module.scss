@@ -5,16 +5,15 @@
   align-items: center;
   justify-content: space-around;
   flex-flow: column;
-  margin-top: 45px;
   margin-bottom: 50px;
   text-align: left;
 
   h1 {
-    color: $SearchCoinFontColor;
+    color: $FontColorWhite;
   }
 
   .Form {
-    width: 50%;
+    width: 35vw;
     position: relative;
     height: 50px;
     overflow: hidden;
@@ -23,7 +22,7 @@
       background: none;
       width: 100%;
       height: 100%;
-      color: $SearchCoinFontColor;
+      color: $FontColorWhite;
       padding-top: 10px;
       font-size: 20px;
       border: none;
@@ -49,7 +48,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      border-bottom: 1px solid $SearchCoinFontColor;
+      border-bottom: 1px solid $FontColorWhite;
 
       &::after {
         content: "";
@@ -64,7 +63,7 @@
       }
 
       .ContentName {
-        color: $SearchCoinFontColor;
+        color: $FontColorWhite;
         position: absolute;
         bottom: 5px;
         left: 0;

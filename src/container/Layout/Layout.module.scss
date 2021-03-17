@@ -1,2 +1,13 @@
+@import "../../styles/variables.scss";
+
 .Container {
+  margin-top: 60px;
+
+  .MainHeader {
+    color: $FontColorWhite;
+  }
+  .NavTools {
+    display: flex;
+    justify-content: center;
+  }
 }

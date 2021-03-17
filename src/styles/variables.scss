@@ -1,9 +1,14 @@
 // CoinTab
-$CoinTabColor: rgb(247, 240, 240);
-$CoinTabShadowColor: rgba(0, 0, 0, 0.75);
-$CPC_lossColor: red;
-$CPC_profitColor: rgb(56, 204, 56);
+$CoinTabColor: #f7f0f0;
+$CPC_lossColor: #ff0000;
+$CPC_profitColor: #38cc38;
 
 // SearchCoin
-$SearchCoinFontColor: #f7f0f0;
 $SearchCoinFontClickColor: #5fa8d3;
+
+// CurrencyList
+$CurrencyListBackgroundColor: #53429a;
+
+// Global
+$FontColorWhite: #f7f0f0;
+$BoxShadow: rgba(0, 0, 0, 0.75);

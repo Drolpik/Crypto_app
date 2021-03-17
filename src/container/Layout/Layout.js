@@ -77,12 +77,15 @@ class Layout extends Component {
 
     return(
       <div className={classes.Container}>
-        <SearchCoin changed={this.searchValueHandler} />
-        <CurrencyList
-          selectedCurrency={this.state.selectedCurrency} 
-          currencyOptions={this.state.currencyOptions}
-          changed={this.currencyChangeHandler}
-        />
+        <h1 className={classes.MainHeader}>Search a cryptocurrency</h1>
+        <div className={classes.NavTools}>
+          <SearchCoin changed={this.searchValueHandler} />
+          <CurrencyList
+            selectedCurrency={this.state.selectedCurrency} 
+            currencyOptions={this.state.currencyOptions}
+            changed={this.currencyChangeHandler}
+          />
+        </div>
 
         {filterCoins.map(coin => {
           return (
