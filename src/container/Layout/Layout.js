@@ -4,8 +4,9 @@ import axios from 'axios';
 import SearchCoin from '../../components/SearchCoin/SearchCoin';
 import CoinTab from '../../components/CoinTab/CoinTab';
 import CurrencyList from '../../components/CurrencyList/CurrencyList';
-
-const EXCHANGE_URL = 'https://api.exchangeratesapi.io/latest';
+import SortOptions from '../../components/Sort/SortOptions/SortOptions';
+import Sort from '../../components/Sort/Sort';
+import {EXCHANGE_URL, CRYPTO_URL} from '../../api/config';
 
 class Layout extends Component {
   state = {
@@ -15,31 +16,30 @@ class Layout extends Component {
     currencyOptions: [],
     exchangeRatesData: [],
     exchangeRate: 1,
+    sortStatus: '',
+    sortOrder: '',
+    sortNameBtn: false,
+    sortPriceBtn: false,
+    sortDayChangeBtn: false,
   }
 
   componentDidMount() {
     // exchange data
     axios.get(EXCHANGE_URL)
       .then((response) => {
-        //console.log(response);
         this.setState({currencyOptions: [response.data.base, ...Object.keys(response.data.rates)]});
         this.setState({selectedCurrency: response.data.base});
         this.setState({exchangeRatesData: response.data.rates});
-
-        //console.log(this.state.exchangeRatesData);
-        //console.log(this.state.currencyOptions);
-        //console.log(this.state.currencyOptions[0]);
       })
       .catch((error) => {
         console.log(error);
       });
 
       // crypto data
-      axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
+      axios.get(CRYPTO_URL)
       .then((response) => {
         this.setState({coinsData: response.data});
-        // console.log('COINSDATA:');
-        // console.log(this.state.coinsData);
+        //console.log(this.state.coinsData);
       })
       .catch((error) => {
         console.log(error);
@@ -47,11 +47,10 @@ class Layout extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // Select currency
     if(this.state.selectedCurrency !== prevState.selectedCurrency) {
-      console.log(`Currency Did Update: ${this.state.selectedCurrency}`);
       const CurrencyNames = Object.keys(this.state.exchangeRatesData);
       const index = CurrencyNames.findIndex(el => el === this.state.selectedCurrency);
-      console.log(index);
       
       const CurrencyRates = Object.values(this.state.exchangeRatesData);
       const NumRate = CurrencyRates[index];
@@ -59,6 +58,43 @@ class Layout extends Component {
       this.state.selectedCurrency === 'EUR' 
         ? this.setState({exchangeRate: 1}) 
         : this.setState({exchangeRate: NumRate});
+    }
+
+    // Sort by name
+    if(this.state.sortNameBtn !== prevState.sortNameBtn) {
+      if(this.state.sortNameBtn) {
+        this.setState({
+          sortStatus: 'name',
+          sortOrder: 'alphabetically'
+        });
+      }
+      else {
+        this.setState({sortOrder: 'not_alphabetically'});
+      }
+    }
+    // Sort by price
+    if(this.state.sortPriceBtn !== prevState.sortPriceBtn) {
+      if(this.state.sortPriceBtn) {
+        this.setState({
+          sortStatus: 'price',
+          sortOrder: 'descending'
+        });
+      }
+      else {
+        this.setState({sortOrder: 'ascending'});
+      }
+    }
+    // Sort by day change
+    if(this.state.sortDayChangeBtn !== prevState.sortDayChangeBtn) {
+      if(this.state.sortDayChangeBtn) {
+        this.setState({
+          sortStatus: 'priceChange',
+          sortOrder: 'descending'
+        });
+      }
+      else {
+        this.setState({sortOrder: 'ascending'});
+      }
     }
   }
 
@@ -68,6 +104,24 @@ class Layout extends Component {
 
   currencyChangeHandler = (event) => {
     this.setState({selectedCurrency: event.target.value});
+  }
+
+  sortNameBtnHandler = (event) => {
+    this.setState(prevState => ({
+      sortNameBtn: !prevState.sortNameBtn
+    }));
+  }
+
+  sortPriceBtnHandler = (event) => {
+    this.setState(prevState => ({
+      sortPriceBtn: !prevState.sortPriceBtn
+    }));
+  }
+
+  sortDayChangeBtnHandler = (event) => {
+    this.setState(prevState => ({
+      sortDayChangeBtn: !prevState.sortDayChangeBtn
+    }));
   }
 
   render() {
@@ -87,19 +141,27 @@ class Layout extends Component {
           />
         </div>
 
-        {filterCoins.map(coin => {
-          return (
-            <CoinTab 
-              key={coin.id}
-              image={coin.image}
-              name={coin.name}  
-              price={coin.current_price}
-              priceChange={coin.price_change_percentage_24h}
-              selectedCurrency={this.state.selectedCurrency}
-              exchangeRate={this.state.exchangeRate}
-            />
-          );
-        })}
+        <SortOptions 
+          name_Click={this.sortNameBtnHandler}
+          price_Click={this.sortPriceBtnHandler}
+          dayChange_Click={this.sortDayChangeBtnHandler}
+        />
+
+        <Sort by={this.state.sortStatus} order={this.state.sortOrder}>
+          {filterCoins.map(coin => {
+            return (
+              <CoinTab 
+                key={coin.id}
+                image={coin.image}
+                name={coin.name}  
+                price={coin.current_price}
+                priceChange={coin.price_change_percentage_24h}
+                selectedCurrency={this.state.selectedCurrency}
+                exchangeRate={this.state.exchangeRate}
+              />
+            );
+          })}
+        </Sort>
       </div>
     );
   }
