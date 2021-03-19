@@ -35,7 +35,6 @@ const sort = (props) => {
         else if(props.order === 'not_alphabetically') {
             return React.Children.toArray(props.children).sort(notAlphabetically);
         }
-
     }
     else if(props.by ==='priceChange') {
         if(props.order === 'descending') {
@@ -44,7 +43,7 @@ const sort = (props) => {
         else if(props.order === 'ascending') {
             return React.Children.toArray(props.children).sort(sortNumAsc);
         }
-    }  
+    }
 }
 
 export default sort;

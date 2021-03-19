@@ -69,7 +69,10 @@ class Layout extends Component {
         });
       }
       else {
-        this.setState({sortOrder: 'not_alphabetically'});
+        this.setState({
+          sortStatus: 'name',
+          sortOrder: 'not_alphabetically'
+        });
       }
     }
     // Sort by price
@@ -81,7 +84,10 @@ class Layout extends Component {
         });
       }
       else {
-        this.setState({sortOrder: 'ascending'});
+        this.setState({
+          sortStatus: 'price',
+          sortOrder: 'ascending'
+        });
       }
     }
     // Sort by day change
@@ -93,7 +99,10 @@ class Layout extends Component {
         });
       }
       else {
-        this.setState({sortOrder: 'ascending'});
+        this.setState({
+          sortStatus: 'priceChange',
+          sortOrder: 'ascending'
+        });
       }
     }
   }
@@ -163,6 +172,7 @@ class Layout extends Component {
           })}
         </Sort>
       </div>
+      
     );
   }
 }
