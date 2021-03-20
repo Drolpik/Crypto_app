@@ -2,12 +2,21 @@
 
 .Container {
   margin-top: 60px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 
   .MainHeader {
     color: $FontColorWhite;
+    margin-bottom: 20px;
   }
   .NavTools {
     display: flex;
     justify-content: center;
+    width: 60%;
+    margin: 0 25px;
+    margin-bottom: 50px;
   }
 }

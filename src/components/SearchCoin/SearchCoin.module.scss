@@ -1,74 +1,63 @@
 @import "../../styles/variables.scss";
 
-.Container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-flow: column;
-  margin-bottom: 50px;
-  text-align: left;
+.Form {
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  width: 80%;
+  min-width: 220px;
+  max-width: 425px;
 
-  h1 {
+  input {
+    background: none;
+    width: 100%;
+    height: 100%;
     color: $FontColorWhite;
-  }
+    padding-top: 10px;
+    font-size: 20px;
+    border: none;
+    outline: none;
 
-  .Form {
-    width: 35vw;
-    position: relative;
-    height: 50px;
-    overflow: hidden;
-
-    input {
-      background: none;
-      width: 100%;
-      height: 100%;
-      color: $FontColorWhite;
-      padding-top: 10px;
-      font-size: 20px;
-      border: none;
-      outline: none;
-
-      &:focus + .LabelName .ContentName,
-      &:valid + .LabelName .ContentName {
-        transform: translateY(-150%);
-        font-size: 14px;
-        color: $SearchCoinFontClickColor;
-      }
-
-      &:focus + .LabelName::after,
-      &:valid + .LabelName::after {
-        transform: translateX(0%);
-      }
+    &:focus + .LabelName .ContentName,
+    &:valid + .LabelName .ContentName {
+      transform: translateY(-150%);
+      font-size: 14px;
+      color: $SearchCoinFontClickColor;
     }
 
-    .LabelName {
+    &:focus + .LabelName::after,
+    &:valid + .LabelName::after {
+      transform: translateX(0%);
+    }
+  }
+
+  .LabelName {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid $FontColorWhite;
+
+    &::after {
+      content: "";
       position: absolute;
-      bottom: 0;
       left: 0;
+      bottom: -1px;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      border-bottom: 1px solid $FontColorWhite;
+      border-bottom: 3px solid $SearchCoinFontClickColor;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
 
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        width: 100%;
-        height: 100%;
-        border-bottom: 3px solid $SearchCoinFontClickColor;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-
-      .ContentName {
-        color: $FontColorWhite;
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        transition: all 0.3s ease;
-      }
+    .ContentName {
+      color: $FontColorWhite;
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      transition: all 0.3s ease;
     }
   }
 }

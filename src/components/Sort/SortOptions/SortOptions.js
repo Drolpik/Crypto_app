@@ -13,7 +13,7 @@ const sortOptions = (props) => (
             clicked={props.price_Click}
         />
         <SortBtn 
-            btnName={"Sort by day change"}
+            btnName={"Sort by daily change"}
             clicked={props.dayChange_Click}
         />
     </div>

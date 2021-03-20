@@ -4,7 +4,8 @@
 .Container {
   font-family: "Oswald", sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
 
   .CoinRow {
     background-color: $CoinTabColor;
@@ -12,10 +13,12 @@
     flex-flow: row;
     align-items: center;
     width: 60%;
-    min-width: 520px;
+    max-width: 800px;
+    min-width: 483px;
     box-shadow: 8px 7px 15px -1px $BoxShadow;
     border-radius: 10px;
     margin-bottom: 20px;
+    padding: 15px 0;
 
     .Coin {
       display: flex;
@@ -42,6 +45,7 @@
         width: 100%;
         font-size: 1.3rem;
         font-weight: 400;
+        margin: 0 10px;
       }
 
       .CoinPriceChange {
@@ -58,5 +62,10 @@
         color: $CPC_profitColor;
       }
     }
+  }
+
+  @media screen and (min-width: 504px) {
+
+    
   }
 }
