@@ -4,17 +4,17 @@
 .Container {
   font-family: "Oswald", sans-serif;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
 
   .CoinRow {
     background-color: $CoinTabColor;
     display: flex;
     flex-flow: row;
-    align-items: center;
+    justify-content: center;
     width: 60%;
     max-width: 800px;
-    min-width: 483px;
+    min-width: 280px;
     box-shadow: 8px 7px 15px -1px $BoxShadow;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       width: 100%;
-      margin-left: 20px;
+      margin-left: 10px;
 
       img {
         width: 40px;
@@ -34,23 +34,24 @@
 
       h1 {
         font-weight: 700;
+        font-size: 1.3rem;
       }
     }
 
     .CoinInfo {
       display: flex;
       width: 100%;
+      align-items: center;
 
       .CoinPrice {
         width: 100%;
-        font-size: 1.3rem;
-        font-weight: 400;
         margin: 0 10px;
+        font-size: 0.8rem;
       }
 
       .CoinPriceChange {
         width: 100%;
-        font-size: 1.3rem;
+        font-size: 0.8rem;
         font-weight: 700;
       }
 
@@ -64,8 +65,14 @@
     }
   }
 
-  @media screen and (min-width: 504px) {
-
-    
+  @media screen and (max-width: $phone) {
+    .CoinRow {
+      width: 95%;
+    }
+  }
+  @media screen and (min-width: $phone) and (max-width: $tablet) {
+    .CoinRow {
+      width: 90%;
+    }
   }
 }

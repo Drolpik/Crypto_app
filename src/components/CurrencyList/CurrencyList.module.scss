@@ -1,8 +1,11 @@
 @import "../../styles/variables.scss";
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 .Container {
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
   .CurrencyList {
     font-family: "Poppins", sans-serif;
@@ -11,8 +14,8 @@
     background: none;
     border: none;
     color: $FontColorWhite;
-    font-size: 1.5rem;
-    padding: 0.4em 1em;
+    font-size: 1rem;
+    padding: 0.3em 0.8em;
     border-radius: 10px;
     outline: none;
     background-image: url("../../assets//arrow-down-sign-to-navigate.svg");

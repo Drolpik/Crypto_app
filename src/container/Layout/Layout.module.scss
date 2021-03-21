@@ -1,22 +1,23 @@
 @import "../../styles/variables.scss";
 
 .Container {
-  margin-top: 60px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  min-width: 335px;
 
   .MainHeader {
-    color: $FontColorWhite;
+    margin-top: 60px;
     margin-bottom: 20px;
+    color: $FontColorWhite;
+    font-size: 1.3rem;
   }
   .NavTools {
     display: flex;
     justify-content: center;
     width: 60%;
-    margin: 0 25px;
+    margin: 0 20px;
     margin-bottom: 50px;
   }
 }

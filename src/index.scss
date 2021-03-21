@@ -1,12 +1,23 @@
+@import "./styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 25px;
+
+  @media screen and (max-width: $phone) {
+    font-size: 15px;
+  }
+}
+
+html {
+  background: linear-gradient(to bottom right, #2e61f0 0%, #8f0e0c 100%);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background: linear-gradient(to bottom right, #2e61f0 0%, #8f0e0c 100%);
-  background-size: cover;
-  background-attachment: fixed;
 }
