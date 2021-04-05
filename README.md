@@ -1,5 +1,5 @@
 # Crypto App
-Cryptocurrency app that uses the <a href="https://www.coingecko.com/en/api">CoinGecko API</a>.
+Cryptocurrency app that uses the <a href="https://www.coingecko.com/en/api" target="_blank">CoinGecko API</a> and <a href="https://openexchangerates.org" target="_blank">OpenExchangeRates API</a>.
 
 ## Installation and Setup Instructions
 * Clone this repository
