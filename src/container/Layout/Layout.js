@@ -12,7 +12,7 @@ class Layout extends Component {
   state = {
     coinsData: [],
     searchValue: '',
-    selectedCurrency: 'EUR',
+    selectedCurrency: '',
     currencyOptions: [],
     exchangeRatesData: [],
     exchangeRate: 1,
@@ -27,7 +27,7 @@ class Layout extends Component {
     // exchange data
     axios.get(EXCHANGE_URL)
       .then((response) => {
-        this.setState({currencyOptions: [response.data.base, ...Object.keys(response.data.rates)]});
+        this.setState({currencyOptions: [...Object.keys(response.data.rates)]});
         this.setState({selectedCurrency: response.data.base});
         this.setState({exchangeRatesData: response.data.rates});
       })
@@ -39,7 +39,6 @@ class Layout extends Component {
       axios.get(CRYPTO_URL)
       .then((response) => {
         this.setState({coinsData: response.data});
-        //console.log(this.state.coinsData);
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +54,7 @@ class Layout extends Component {
       const CurrencyRates = Object.values(this.state.exchangeRatesData);
       const NumRate = CurrencyRates[index];
 
-      this.state.selectedCurrency === 'EUR' 
+      this.state.selectedCurrency === 'USD' 
         ? this.setState({exchangeRate: 1}) 
         : this.setState({exchangeRate: NumRate});
     }
